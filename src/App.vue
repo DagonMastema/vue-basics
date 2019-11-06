@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div id= "app">    
     <HelloWorld msg="List of Employees"/>
     <ol>
@@ -6,6 +7,11 @@
       {{ todo.text }}
     </li>
   </ol>
+=======
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js"/>
+>>>>>>> ccb871f0f303b60d6c5c71ce76b17b4129ea08f9
   </div>
 </template>
 
