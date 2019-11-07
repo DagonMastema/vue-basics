@@ -1,7 +1,6 @@
 <template>
   <div id="app">    
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <!--<HelloWorld message="type your text here"/>-->
+    <HelloWorld msg="Welcome to the Home Page"/>    
   </div>
 </template>
 
@@ -25,5 +24,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background-color: beige;
+  height: 100vh;
 }
 </style>
