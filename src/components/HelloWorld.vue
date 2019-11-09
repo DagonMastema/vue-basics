@@ -1,12 +1,26 @@
-<template>
+<template >
   <div class="hello">
     <h1>{{ msg }}</h1>    
     <p>Enter value : <input v-model="message"></p>
     <p>Entered Message : {{ message }}</p>
-    <div class="table">
-      <table :height="height" :width="width" :border="border" :aria-colcount="columns" :aria-rowcount="rows" ></table>
-    </div>
-   </div>
+    
+  <v-simple-table>
+      <thead>
+        <tr>
+          <th class="text-left">Id</th>
+          <th class="text-left">Name</th>
+          <th class="text-left">Department</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in employee" :key="item.Id">
+          <td>{{ item.Id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.Department }}</td>
+        </tr>
+      </tbody>
+  </v-simple-table>
+  </div>
 </template>
 
 <script>
@@ -17,28 +31,66 @@ export default {
   },
   data: ()=> ({
    message: null,
-   height:100,
-   width:500,
-   border:1 ,
-   columns:3,
-   rows:4,
- })
- 
-
-}
+    employee: [
+          {
+            Id: 1,
+            name: 'Rutherford',
+          },
+          {
+            Id: 2,
+            name: 'Vladimir',
+          },
+          {
+            Id: 3,
+            name: 'Sairose',
+          },
+          {
+            Id: 4,
+            name: 'Elizabeth',
+          },
+          {
+            Id: 5,
+            name: 'Mary',
+          },
+          {
+            Id: 6,
+            name: 'Anisha',
+          },
+          {
+            Id: 7,
+            name: 'Martinez',
+          },
+          {
+            Id: 8,
+            name: 'Runisha',
+          },
+          {
+            Id: 9,
+            name: 'Timothy',
+          },
+          {
+            Id: 10,
+            name: 'Ruchir',
+          },
+        ],
+     })
+ }
 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.table{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-auto-rows: minimax(5px, auto); 
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
   text-align: center;
-  }
-.cell{
-  border :  0.5px solid black ;
+  background-color: darkkhaki;
+  color: white;
+}
+td{
+  border: 1px solid darkkhaki;
+  border-collapse: collapse;
+  padding: 8px;
 }
 h1 {
   margin: 40px 0 0;
