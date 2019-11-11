@@ -26,7 +26,7 @@
     <input v-model="Text" placeholder="Name">
     <input v-model="Text" placeholder="Department">
     <br>
-    <button v-on:click="$emit('Add')">Submit</button>
+    <button v-on:click="$emit('Add')">Add</button>
     <button v-on:click="$emit('Remove')">Remove</button> 
     <button v-on:click="$emit('Edit')">Edit</button>       
   </div>
@@ -41,20 +41,12 @@ export default {
   data: ()=> ({
    message: null,
     employee: [{
-      Id: null,
-      name: null,
-      Department: null,
+      Id: '',
+      name: '',
+      Department: '',
           },
         ],
-        onClick: function(e) {
-      this.$emit("Id", e, this.dataItem, this.expanded);
-    },
-    editHandler: function() {
-      this.$emit("name", this.dataItem);
-    },
-    removeHandler: function() {
-      this.$emit("Department", this.dataItem);
-    },
+        
      })
  }
 
