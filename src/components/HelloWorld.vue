@@ -3,13 +3,13 @@
     <h1>{{ msg }}</h1>    
     <p>Enter value : <input v-model="message"></p>
     <p>Entered Message : {{ message }}</p>
-    
+        
   <v-simple-table>
       <thead>
         <tr>
-          <th class="text-left">Id</th>
-          <th class="text-left">Name</th>
-          <th class="text-left">Department</th>
+          <th class="text">Id</th>
+          <th class="text">Name</th>
+          <th class="text">Department</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +20,15 @@
         </tr>
       </tbody>
   </v-simple-table>
+  <br>
+   
+    <input v-model="Text" placeholder="Id">
+    <input v-model="Text" placeholder="Name">
+    <input v-model="Text" placeholder="Department">
+    <br>
+    <button v-on:click="$emit('Add')">Submit</button>
+    <button v-on:click="$emit('Remove')">Remove</button> 
+    <button v-on:click="$emit('Edit')">Edit</button>       
   </div>
 </template>
 
@@ -31,48 +40,21 @@ export default {
   },
   data: ()=> ({
    message: null,
-    employee: [
-          {
-            Id: 1,
-            name: 'Rutherford',
-          },
-          {
-            Id: 2,
-            name: 'Vladimir',
-          },
-          {
-            Id: 3,
-            name: 'Sairose',
-          },
-          {
-            Id: 4,
-            name: 'Elizabeth',
-          },
-          {
-            Id: 5,
-            name: 'Mary',
-          },
-          {
-            Id: 6,
-            name: 'Anisha',
-          },
-          {
-            Id: 7,
-            name: 'Martinez',
-          },
-          {
-            Id: 8,
-            name: 'Runisha',
-          },
-          {
-            Id: 9,
-            name: 'Timothy',
-          },
-          {
-            Id: 10,
-            name: 'Ruchir',
+    employee: [{
+      Id: null,
+      name: null,
+      Department: null,
           },
         ],
+        onClick: function(e) {
+      this.$emit("Id", e, this.dataItem, this.expanded);
+    },
+    editHandler: function() {
+      this.$emit("name", this.dataItem);
+    },
+    removeHandler: function() {
+      this.$emit("Department", this.dataItem);
+    },
      })
  }
 

@@ -1,6 +1,7 @@
 <template>
   <div id="app">    
-    <HelloWorld msg="Welcome to the Home Page"/>    
+    <HelloWorld msg="Welcome to the Home Page"/>
+
   </div>
 </template>
 
@@ -23,8 +24,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  
-  background-color: beige;
-  height: 100vh;
+  margin-top: 60px;
+  background-image: beige; 
 }
 </style>
