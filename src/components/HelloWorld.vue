@@ -22,9 +22,9 @@
   </v-simple-table>
   <br>
    
-    <input v-model="Text" placeholder="Id">
-    <input v-model="Text" placeholder="Name">
-    <input v-model="Text" placeholder="Department">
+    <input v-model="Id" placeholder="Id">
+    <input v-model="name" placeholder="Name">
+    <input v-model="Department" placeholder="Department">
     <br>
     <button v-on:click="$emit('Add')">Add</button>
     <button v-on:click="$emit('Remove')">Remove</button> 
@@ -44,9 +44,19 @@ export default {
       Id: '',
       name: '',
       Department: '',
+      rowData:[] ,
           },
         ],
-        
+         methods: {
+           Add:()=> {
+            this.rowData.push({
+              Id: '',
+              name: '',
+              Department: ''
+            })
+           }
+          
+         }
      })
  }
 
