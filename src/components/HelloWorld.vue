@@ -1,7 +1,7 @@
 <template >
   <div class="hello">
     <h1>{{ msg }}</h1>    
-    <p>Enter value : <input v-model="message"></p>
+    <p>Enter value : <input v-model.lazy="message"></p>
     <p>Entered Message : {{ message }}</p>
         
   <v-simple-table>
@@ -16,19 +16,19 @@
         <tr v-for="item in employee" :key="item.Id">
           <td>{{ item.Id }}</td>
           <td>{{ item.name }}</td>
-          <td>{{ item.Department }}</td>
+          <td>{{ item.Department }}</td>          
         </tr>
       </tbody>
   </v-simple-table>
   <br>
    
-    <input v-model="Id" placeholder="Id">
-    <input v-model="name" placeholder="Name">
-    <input v-model="Department" placeholder="Department">
+    <input v-model.lazy="Id" placeholder="Id">
+    <input v-model.lazy="name" placeholder="Name">
+    <input v-model.lazy="Department" placeholder="Department">
     <br>
-    <button v-on:click="$emit('Add')">Add</button>
-    <button v-on:click="$emit('Remove')">Remove</button> 
-    <button v-on:click="$emit('Edit')">Edit</button>       
+    <button v-on:click="add()">Add Row</button>
+    <button v-on:click="remove()">Remove</button> 
+           
   </div>
 </template>
 
@@ -40,24 +40,30 @@ export default {
   },
   data: ()=> ({
    message: null,
-    employee: [{
+     employee: [{
       Id: '',
       name: '',
       Department: '',
-      rowData:[] ,
-          },
+      
+      inputs:[]
+        }
         ],
          methods: {
-           Add:()=> {
-            this.rowData.push({
-              Id: '',
-              name: '',
-              Department: ''
-            })
-           }
-          
-         }
+            Add() {
+              this.inputs.push({
+                   Id: '',
+                   name: '',
+                   Department: '',
+                  })
+                 },
+            remove(index) {
+              this.inputs.splice(index,1)
+              }
+          }
+   
+         
      })
+     
  }
 
 </script>
