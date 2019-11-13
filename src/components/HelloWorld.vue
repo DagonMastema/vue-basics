@@ -40,9 +40,9 @@ export default {
   },
   data: ()=> ({
    message: null,
-   id:"",
-   name:"",
-   department:"",
+   id: null,
+   name: null,
+   department: null,
    employee: [],
   }),
   methods: {
@@ -52,6 +52,9 @@ export default {
         name: this.name,
         department: this.department,
       })
+      this.id="";
+      this.name="";
+      this.department="";
     },
     remove(index) {
       this.employee.splice(index,1)
