@@ -57,6 +57,7 @@ export default {
       this.department="";
     },
     remove(index) {
+      // var index = this.employee.indexOf(item)
       this.employee.splice(index,1)
     }
   }
