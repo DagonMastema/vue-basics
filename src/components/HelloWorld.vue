@@ -50,11 +50,11 @@ export default {
       this.employee.push({
         id: this.id,
         name: this.name,
-        department: this.department,
+        department: this.department
       })
       this.id="";
       this.name="";
-      this.department="";
+      this.department=""
     },
     remove(index) {
       // var index = this.employee.indexOf(item)
