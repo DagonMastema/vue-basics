@@ -16,7 +16,8 @@
         <tr v-for="item in employee" :key="item.Id">
           <td>{{ item.Id }}</td>
           <td>{{ item.name }}</td>
-          <td>{{ item.Department }}</td>          
+          <td>{{ item.Department }}</td> 
+          <td><button v-on:click="remove()">Remove</button></td>         
         </tr>
       </tbody>
   </v-simple-table>
@@ -26,9 +27,8 @@
     <input v-model.lazy="name" placeholder="Name">
     <input v-model.lazy="Department" placeholder="Department">
     <br>
-    <button v-on:click="add()">Add Row</button>
-    <button v-on:click="remove()">Remove</button> 
-           
+    <button v-on:click="add()">Add Row</button>  
+     
   </div>
 </template>
 
@@ -36,35 +36,33 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String    
+    msg: String,    
   },
   data: ()=> ({
    message: null,
-     employee: [{
+   Id:"",
+   name:"",
+   Department:"",
+   
+    employee: [{
       Id: '',
       name: '',
       Department: '',
-      
-      inputs:[]
-        }
-        ],
-         methods: {
-            Add() {
-              this.inputs.push({
-                   Id: '',
-                   name: '',
-                   Department: '',
-                  })
-                 },
-            remove(index) {
-              this.inputs.splice(index,1)
-              }
+    }],
+  }),
+  methods: {
+          add() {
+              this.employee.push({
+                Id: this.Id,
+                name: this.name,
+                Department: this.Department,
+              })
+            },
+          remove(index) {
+              this.employee.splice(index,1)
           }
-   
-         
-     })
-     
- }
+        }
+}
 
 </script>
 
