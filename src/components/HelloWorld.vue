@@ -13,19 +13,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in employee" :key="item.Id">
-          <td>{{ item.Id }}</td>
+        <tr v-for="item in employee" :key="item.id">
+          <td>{{ item.id }}</td>
           <td>{{ item.name }}</td>
-          <td>{{ item.Department }}</td> 
-          <td><button v-on:click="remove()">Remove</button></td>         
+          <td>{{ item.department }}</td> 
+          <td><button v-on:click="remove(item)">Remove</button></td>         
         </tr>
       </tbody>
   </v-simple-table>
   <br>
    
-    <input v-model.lazy="Id" placeholder="Id">
+    <input v-model.lazy="id" placeholder="id">
     <input v-model.lazy="name" placeholder="Name">
-    <input v-model.lazy="Department" placeholder="Department">
+    <input v-model.lazy="department" placeholder="department">
     <br>
     <button v-on:click="add()">Add Row</button>  
      
@@ -40,25 +40,26 @@ export default {
   },
   data: ()=> ({
    message: null,
-   Id:"",
+   id:"",
    name:"",
-   Department:"",
+   department:"",
    
     employee: [{
-      Id: '',
+      id: '',
       name: '',
-      Department: '',
+      department: '',
     }],
   }),
   methods: {
           add() {
               this.employee.push({
-                Id: this.Id,
+                id: this.id,
                 name: this.name,
-                Department: this.Department,
+                department: this.department,
               })
             },
-          remove(index) {
+          remove(item) {  
+              var index = this.employee.indexOf(item);           
               this.employee.splice(index,1)
           }
         }
