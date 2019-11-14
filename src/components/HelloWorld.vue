@@ -10,25 +10,37 @@
           <th class="text">Id</th>
           <th class="text">Name</th>
           <th class="text">Department</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, index) in employee" :key="item.id">
-          <td>{{ item.id }}</td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.department }}</td>
+          <td>    
+            <div v-if="item.edit"><input v-model.lazy="item.id" placeholder="id"></div>
+            <p v-else>{{ item.id }}</p>
+          </td>
+          <td>
+            <div v-if="item.edit"><input v-model.lazy="item.name" placeholder="name"></div>
+            <p v-else>{{ item.name }}</p>
+          </td>
+          <td>    
+            <div v-if="item.edit"><input v-model.lazy="item.department" placeholder="department"></div>
+            <p v-else>{{ item.department}}</p>
+          </td>
           <td><button v-on:click="remove(index)">Remove</button></td>
+          <td><button v-on:click="edit(item)">Edit Row</button></td>
+          
         </tr>
       </tbody>
   </v-simple-table>
   <br>
-
-    <input v-model.lazy="id" placeholder="id">
-    <input v-model.lazy="name" placeholder="Name">
-    <input v-model.lazy="department" placeholder="department">
+  <br>
+    <input v-model.lazy="form.id" placeholder="id">
+    <input v-model.lazy="form.name" placeholder="Name">
+    <input v-model.lazy="form.department" placeholder="department">
     <br>
-    <button v-on:click="add()">Add Row</button>
-
+    <button v-on:click="add()">Add Row</button>    
   </div>
 </template>
 
@@ -40,25 +52,31 @@ export default {
   },
   data: ()=> ({
    message: null,
-   id: null,
-   name: null,
-   department: null,
+   form : {
+    id: '',
+    name: '',
+    department: ''
+},
    employee: [],
   }),
   methods: {
     add() {
       this.employee.push({
-        id: this.id,
-        name: this.name,
-        department: this.department
+        id: this.form.id,
+        name: this.form.name,
+        department: this.form.department,
+        edit: false
       })
-      this.id="";
-      this.name="";
-      this.department=""
+      this.form.id="";
+      this.form.name="";
+      this.form.department=""
     },
     remove(index) {
       // var index = this.employee.indexOf(item)
       this.employee.splice(index,1)
+    },   
+    edit(item){
+     item.edit = !item.edit
     }
   }
 }
