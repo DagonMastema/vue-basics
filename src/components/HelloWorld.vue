@@ -40,15 +40,21 @@
     <input v-model.lazy="form.name" placeholder="Name">
     <input v-model.lazy="form.department" placeholder="department">
     <br>
-    <button v-on:click="add()">Add Row</button>    
+    <button v-on:click="add()">Add Row</button>   
+    <buttoncounter></buttoncounter>
   </div>
 </template>
 
 <script>
-export default {
+import buttoncounter from './buttoncounter.vue'
+
+export default {    
   name: 'HelloWorld',
+  components: {
+    buttoncounter
+  },  
   props: {
-    msg: String,
+    msg: String,    
   },
   data: ()=> ({
    message: null,
@@ -65,7 +71,7 @@ export default {
         id: this.form.id,
         name: this.form.name,
         department: this.form.department,
-        edit: false
+        edit: true
       })
       this.form.id="";
       this.form.name="";
@@ -78,9 +84,8 @@ export default {
     edit(item){
      item.edit = !item.edit
     }
-  }
+  }  
 }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
