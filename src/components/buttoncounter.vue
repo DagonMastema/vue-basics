@@ -1,22 +1,18 @@
 <template>
 <div id="componentsdemo">
-  <h1></h1>
-  <buttoncounter></buttoncounter>
-</div>     
+  <h1>Button Counter </h1>
+  <button v-on:click="count++">You clicked me {{ count }} times.</button>
+</div>
 </template>
 
 <script>
-import Vue from 'vue';
-new Vue({el: '#componentsdemo'})  
-Vue.component('buttoncounter', {
+export default {
   data: function () {
     return {
       count: 0
     }
   },
-  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-})
-
+}
 </script>
 <style scoped>
 </style>

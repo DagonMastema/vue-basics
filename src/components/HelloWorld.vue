@@ -1,5 +1,9 @@
 <template >
   <div class="hello">
+    <div id="components-demo">
+      <!-- <button-counter></button-counter> -->
+    </div>
+    <ButtonCounter></ButtonCounter>
     <h1>{{ msg }}</h1>
     <p>Enter value : <input v-model.lazy="message"></p>
     <p>Entered Message : {{ message }}</p>
@@ -16,7 +20,7 @@
       </thead>
       <tbody>
         <tr v-for="(item, index) in employee" :key="item.id">
-          <td>    
+          <td>
             <div v-if="item.edit"><input v-model.lazy="item.id" placeholder="id"></div>
             <p v-else>{{ item.id }}</p>
           </td>
@@ -24,13 +28,13 @@
             <div v-if="item.edit"><input v-model.lazy="item.name" placeholder="name"></div>
             <p v-else>{{ item.name }}</p>
           </td>
-          <td>    
+          <td>
             <div v-if="item.edit"><input v-model.lazy="item.department" placeholder="department"></div>
             <p v-else>{{ item.department}}</p>
           </td>
           <td><button v-on:click="remove(index)">Remove</button></td>
           <td><button v-on:click="edit(item)">Edit Row</button></td>
-          
+
         </tr>
       </tbody>
   </v-simple-table>
@@ -40,21 +44,20 @@
     <input v-model.lazy="form.name" placeholder="Name">
     <input v-model.lazy="form.department" placeholder="department">
     <br>
-    <button v-on:click="add()">Add Row</button>   
-    <buttoncounter></buttoncounter>
+    <button v-on:click="add()">Add Row</button>
   </div>
 </template>
 
 <script>
-import buttoncounter from './buttoncounter.vue'
-
-export default {    
+import ButtonCounter from './ButtonCounter.vue'
+// import Vue from 'vue';
+export default {
   name: 'HelloWorld',
   components: {
-    buttoncounter
-  },  
+    ButtonCounter
+  },
   props: {
-    msg: String,    
+    msg: String,
   },
   data: ()=> ({
    message: null,
@@ -80,11 +83,11 @@ export default {
     remove(index) {
       // var index = this.employee.indexOf(item)
       this.employee.splice(index,1)
-    },   
+    },
     edit(item){
      item.edit = !item.edit
     }
-  }  
+  }
 }
 </script>
 
