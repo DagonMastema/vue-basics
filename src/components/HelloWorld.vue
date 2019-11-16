@@ -4,6 +4,12 @@
       <!-- <button-counter></button-counter> -->
     </div>
     <ButtonCounter></ButtonCounter>
+    <Child :parentData="myData" v-on:childToParent="onChildClick" v-on:increment="counter++"></Child>
+    <p>{{fromChild}}</p>
+    <Child title="This is my title"></Child>
+    <Child :parentData="{msg: 'xxx'}"></Child>
+    <Child :parentData="myData"></Child>
+    <Child :stringProp="stringMessage"></Child>
     <h1>{{ msg }}</h1>
     <p>Enter value : <input v-model.lazy="message"></p>
     <p>Entered Message : {{ message }}</p>
@@ -50,11 +56,19 @@
 
 <script>
 import ButtonCounter from './ButtonCounter.vue'
+import Child from './List.vue'
 // import Vue from 'vue';
 export default {
+  datas () {
+    return {
+      counter: 0,
+      fromChild: '', 
+    }
+  },
   name: 'HelloWorld',
   components: {
-    ButtonCounter
+    ButtonCounter,
+    Child
   },
   props: {
     msg: String,
@@ -67,6 +81,7 @@ export default {
     department: ''
 },
    employee: [],
+
   }),
   methods: {
     add() {
@@ -86,6 +101,9 @@ export default {
     },
     edit(item){
      item.edit = !item.edit
+    },
+    onChildClick (value) {
+      this.fromChild = value
     }
   }
 }
