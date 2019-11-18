@@ -1,19 +1,20 @@
 <template>
 <div >
-  <button type="button" name="button" v-on:click="$emit('Click')">Click me</button><br>
-  <p>{{count}}</p>
-  <label for="input">Input: </label>
-  <input id="input" type="text" name="msg" v-model="childMessage" v-on:click="emitMethod">
+  <button type="button" name="button" v-on:click="$emit('increment')">Click me</button><br>  
+  <label for="input">Input:</label>
+  <input id="input" type="text" name="msg" v-model="childMessage" v-on:keyup="emitMethod">
   <p>{{childMessage}}</p>
+  <div><p>{{ title }}</p>
+  <p>{{ parentData }}</p>
+  <p>{{ stringProp }}</p></div>
 </div>
 </template>
 
 <script>
 export default {
   data: function () {
-    return {
-      count: 0,
-      childMessage: ''
+    return {      
+      childMessage: '',            
     }
   },
   props: {
