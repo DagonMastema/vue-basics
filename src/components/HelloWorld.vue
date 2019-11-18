@@ -4,10 +4,10 @@
       <!-- <button-counter></button-counter> -->
     </div>
     <ButtonCounter></ButtonCounter>
-    <Child title="This is my title"></Child>
+    <!--<Child title="This is my title"></Child>
     <Child :parentData="{msg: 'xxx'}"></Child>
     <Child :parentData="myData"></Child>
-    <Child :stringProp="stringMessage"></Child>
+    <Child :stringProp="stringMessage"></Child>-->
     <Child :parentData="myData" v-on:childToParent="onChildClick" v-on:increment="counter++"></Child>    
     <p>{{ counter }}<p>
     <h1>{{ msg }}</h1>
