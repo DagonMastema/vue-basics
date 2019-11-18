@@ -4,12 +4,12 @@
       <!-- <button-counter></button-counter> -->
     </div>
     <ButtonCounter></ButtonCounter>
-    <!--<Child title="This is my title"></Child>
+    <Child title="This is my title"></Child>
     <Child :parentData="{msg: 'xxx'}"></Child>
     <Child :parentData="myData"></Child>
-    <Child :stringProp="stringMessage"></Child>-->
-    <Child :parentData="myData" v-on:childToParent="onChildClick" v-on:increment="counter++">{{ counter }}</Child>    
-    <p>{{ fromChild }}<p>
+    <Child :stringProp="stringMessage"></Child>
+    <Child :parentData="myData" v-on:childToParent="onChildClick" v-on:increment="counter++"></Child>    
+    <p>{{ counter }}<p>
     <h1>{{ msg }}</h1>
     <p>Enter value : <input v-model.lazy="message"></p>
     <p>Entered Message : {{ message }}</p>
@@ -67,15 +67,11 @@ export default {
   props: {
     msg: String,
   },
-  data: ()=> ({    
-    function() {
-      return{
-        counter: 0,
-        fromChild: '',
-      }
-    },
+  data: ()=> ({
    myData: {name:"myname",age:'20'},
-   stringMessage: "stringMessage",      
+   stringMessage: "stringMessage",
+   counter: 0,
+   fromChild: '',
    message: null,
    form : {
     id: '',
