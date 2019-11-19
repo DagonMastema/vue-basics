@@ -1,7 +1,7 @@
 <template>
   <div id="app">    
     <HelloWorld msg="Welcome to the Home Page"/>
-
+    
   </div>
 </template>
 
