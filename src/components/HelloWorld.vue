@@ -4,20 +4,20 @@
       <!-- <button-counter></button-counter> -->
     </div>
     <ButtonCounter></ButtonCounter>
-    <p>
+    <!-- <p>
       <router-link to="/mail">Mail</router-link>
-    </p>
-    <router-view>show</router-view>
+    </p> -->
+    <!-- <router-view>show</router-view> -->
     <!--<Child title="This is my title"></Child>
     <Child :parentData="{msg: 'xxx'}"></Child>
     <Child :parentData="myData"></Child>
     <Child :stringProp="stringMessage"></Child>-->
-    <Child :parentData="myData" v-on:childToParent="onChildClick" v-on:increment="counter++"></Child>    
+    <Child :parentData="myData" v-on:childToParent="onChildClick" v-on:increment="counter++"></Child>
     <p>{{ counter }}<p>
     <h1>{{ msg }}</h1>
     <p>Enter value : <input v-model.lazy="message"></p>
     <p>Entered Message : {{ message }}</p>
-    
+
 
   <v-simple-table>
       <thead>
@@ -64,10 +64,10 @@
       :backTitle="x.back.title"
       :backData="x.back.message"/>
       <br>
-      <br>  
       <br>
-      <br>    
-      <h5 v-for="x in array" :key='x.id'>id: {{x.id}}, Name: {{x.first_name}} {{x.last_Name}}</h5>     
+      <br>
+      <br>
+      <h5 v-for="x in array" :key='x.id'>id: {{x.id}}, Name: {{x.first_name}} {{x.last_Name}}</h5>
       </div>
   </div>
 </template>
@@ -115,7 +115,7 @@ export default {
       back: {
         title: 'Quote of the day',
         message: '“Create the highest, grandest vision possible for your life, because you become what you believe”',
-      }, 
+      },
       },
       {
       front: {
@@ -125,7 +125,7 @@ export default {
       back: {
         title: 'Quote of the day',
         message: '“Wherever life plants you, bloom with grace”',
-      }, 
+      },
       },
       {
       front: {
@@ -135,7 +135,7 @@ export default {
       back: {
         title: 'Quote of the day',
         message: 'Success is not final, failure is not fatal: it is the courage to continue that counts.',
-      }, 
+      },
       }],
    myData: {name:"myname",age:20},
    stringMessage: "stringMessage",
