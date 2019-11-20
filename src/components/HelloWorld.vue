@@ -1,210 +1,149 @@
-<template >
-  <div class="hello">
-    <div id="components-demo">
-      <!-- <button-counter></button-counter> -->
-    </div>
-    <ButtonCounter></ButtonCounter>
-    <!-- <p>
-      <router-link to="/mail">Mail</router-link>
-    </p> -->
-    <!-- <router-view>show</router-view> -->
-    <!--<Child title="This is my title"></Child>
-    <Child :parentData="{msg: 'xxx'}"></Child>
-    <Child :parentData="myData"></Child>
-    <Child :stringProp="stringMessage"></Child>-->
-    <Child :parentData="myData" v-on:childToParent="onChildClick" v-on:increment="counter++"></Child>
-    <p>{{ counter }}<p>
-    <h1>{{ msg }}</h1>
-    <p>Enter value : <input v-model.lazy="message"></p>
-    <p>Entered Message : {{ message }}</p>
+<template>
+  <v-container>
+    <v-layout
+      text-center
+      wrap
+    >
+      <v-flex xs12>
+        <v-img
+          :src="require('../assets/logo.svg')"
+          class="my-3"
+          contain
+          height="200"
+        ></v-img>
+      </v-flex>
 
+      <v-flex mb-4>
+        <h1 class="display-2 font-weight-bold mb-3">
+          Welcome to Vuetify
+        </h1>
+        <p class="subheading font-weight-regular">
+          For help and collaboration with other Vuetify developers,
+          <br>please join our online
+          <a href="https://community.vuetifyjs.com" target="_blank">Discord Community</a>
+        </p>
+      </v-flex>
 
-  <v-simple-table>
-      <thead>
-        <tr>
-          <th class="text">Id</th>
-          <th class="text">Name</th>
-          <th class="text">Department</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(item, index) in employee" :key="item.id">
-          <td>
-            <div v-if="item.edit"><input v-model.lazy="item.id" placeholder="id"></div>
-            <p v-else>{{ item.id }}</p>
-          </td>
-          <td>
-            <div v-if="item.edit"><input v-model.lazy="item.name" placeholder="name"></div>
-            <p v-else>{{ item.name }}</p>
-          </td>
-          <td>
-            <div v-if="item.edit"><input v-model.lazy="item.department" placeholder="department"></div>
-            <p v-else>{{ item.department}}</p>
-          </td>
-          <td><button v-on:click="remove(index)">Remove</button></td>
-          <td><button v-on:click="edit(item)">Edit Row</button></td>
+      <v-flex
+        mb-5
+        xs12
+      >
+        <h2 class="headline font-weight-bold mb-3">What's next?</h2>
 
-        </tr>
-      </tbody>
-  </v-simple-table>
-  <br>
-  <br>
-    <input v-model.lazy="form.id" placeholder="id">
-    <input v-model.lazy="form.name" placeholder="Name">
-    <input v-model.lazy="form.department" placeholder="department">
-    <br>
-    <button v-on:click="add()">Add Row</button>
-    <br>
-    <div>
-      <info-card v-for="x in cards" :key='x.frontData' :frontType="'graph'"
-      :frontTitle="x.front.title"
-      :frontData="x.front.graphData"
-      :backTitle="x.back.title"
-      :backData="x.back.message"/>
-      <br>
-      <br>
-      <br>
-      <br>
-      <h5 v-for="x in array" :key='x.id'>id: {{x.id}}, Name: {{x.first_name}} {{x.last_Name}}</h5>
-      </div>
-  </div>
+        <v-layout justify-center>
+          <a
+            v-for="(next, i) in whatsNext"
+            :key="i"
+            :href="next.href"
+            class="subheading mx-3"
+            target="_blank"
+          >
+            {{ next.text }}
+          </a>
+        </v-layout>
+      </v-flex>
+
+      <v-flex
+        xs12
+        mb-5
+      >
+        <h2 class="headline font-weight-bold mb-3">Important Links</h2>
+
+        <v-layout justify-center>
+          <a
+            v-for="(link, i) in importantLinks"
+            :key="i"
+            :href="link.href"
+            class="subheading mx-3"
+            target="_blank"
+          >
+            {{ link.text }}
+          </a>
+        </v-layout>
+      </v-flex>
+
+      <v-flex
+        xs12
+        mb-5
+      >
+        <h2 class="headline font-weight-bold mb-3">Ecosystem</h2>
+
+        <v-btn color="success">Success</v-btn>
+        <v-btn color="error">Error</v-btn>
+        <v-btn color="warning">Warning</v-btn>
+        <v-btn color="info">Info</v-btn>
+
+        <v-layout justify-center>
+          <a
+            v-for="(eco, i) in ecosystem"
+            :key="i"
+            :href="eco.href"
+            class="subheading mx-3"
+            target="_blank"
+          >
+            {{ eco.text }}
+          </a>
+        </v-layout>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-import ButtonCounter from './ButtonCounter.vue'
-import Child from './List.vue'
-import InfoCard from 'vue-info-card'
-
-// import Vue from 'vue';
 export default {
   name: 'HelloWorld',
-  components: {
-    ButtonCounter,
-    Child,
-    InfoCard,
-  },
-  props: {
-    msg: String,
-  },
-  data: ()=> ({
-    array:[
- {
-   id: '1',
-   first_name: 'abc',
-   last_Name: 'xyz'
- },
- {
-   id: '2',
-   first_name: 'any',
-   last_Name: 'name'
- },
- {
-   id: '3',
-   first_name: 'def',
-   last_Name: 'suv'
- }
-],
-   cards:[
-     {
-     front: {
-        title: 'Some Number',
-        graphData: [1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 5, 6, 2, 4, 5],
-      },
-      back: {
-        title: 'Quote of the day',
-        message: '“Create the highest, grandest vision possible for your life, because you become what you believe”',
-      },
+
+  data: () => ({
+    ecosystem: [
+      {
+        text: 'vuetify-loader',
+        href: 'https://github.com/vuetifyjs/vuetify-loader',
       },
       {
-      front: {
-        title: 'Some Number',
-        graphData: [3, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
-      },
-      back: {
-        title: 'Quote of the day',
-        message: '“Wherever life plants you, bloom with grace”',
-      },
+        text: 'github',
+        href: 'https://github.com/vuetifyjs/vuetify',
       },
       {
-      front: {
-        title: 'Some Number',
-        graphData: [1, 2, 3, 5, 3, 2, 1, 5, 9, 6, 3, 5, 8, 9, 2, 4],
+        text: 'awesome-vuetify',
+        href: 'https://github.com/vuetifyjs/awesome-vuetify',
       },
-      back: {
-        title: 'Quote of the day',
-        message: 'Success is not final, failure is not fatal: it is the courage to continue that counts.',
+    ],
+    importantLinks: [
+      {
+        text: 'Documentation',
+        href: 'https://vuetifyjs.com',
       },
-      }],
-   myData: {name:"myname",age:20},
-   stringMessage: "stringMessage",
-   counter: 0,
-   fromChild: '',
-   message: null,
-   form : {
-    id: '',
-    name: '',
-    department: ''
-},
-   employee: [],
-   card: []
+      {
+        text: 'Chat',
+        href: 'https://community.vuetifyjs.com',
+      },
+      {
+        text: 'Made with Vuetify',
+        href: 'https://madewithvuejs.com/vuetify',
+      },
+      {
+        text: 'Twitter',
+        href: 'https://twitter.com/vuetifyjs',
+      },
+      {
+        text: 'Articles',
+        href: 'https://medium.com/vuetify',
+      },
+    ],
+    whatsNext: [
+      {
+        text: 'Explore components',
+        href: 'https://vuetifyjs.com/components/api-explorer',
+      },
+      {
+        text: 'Select a layout',
+        href: 'https://vuetifyjs.com/layout/pre-defined',
+      },
+      {
+        text: 'Frequently Asked Questions',
+        href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
+      },
+    ],
   }),
-  methods: {
-    add() {
-      this.employee.push({
-        id: this.form.id,
-        name: this.form.name,
-        department: this.form.department,
-        edit: true
-      })
-      this.form.id="";
-      this.form.name="";
-      this.form.department=""
-    },
-    remove(index) {
-      // var index = this.employee.indexOf(item)
-      this.employee.splice(index,1)
-    },
-    edit(item){
-     item.edit = !item.edit
-    },
-    onChildClick (value) {
-      this.fromChild = value
-    },
-
-  }
-}
+};
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: darkkhaki;
-  color: white;
-}
-td{
-  border: 1px solid darkkhaki;
-  border-collapse: collapse;
-  padding: 8px;
-}
-h1 {
-  margin: 40px 0 0;
-  color: darkgreen;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-
-</style>
