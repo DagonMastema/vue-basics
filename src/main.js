@@ -3,8 +3,12 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import Mail from './components/Mail.vue'
 import HelloWorld from './components/HelloWorld.vue'
+import Vuetify from 'vuetify'
+
 
 Vue.use(VueRouter)
+Vue.use(Vuetify)
+
 
 //const Mail = { template: '<div>mail</div>' }
 
@@ -21,5 +25,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  Vuetify,
   render: h => h(App),
 }).$mount('#app')
