@@ -2,7 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import Mail from './components/Mail.vue'
-import HelloWorld from './components/HelloWorld.vue'
+import Home from './components/Home.vue'
+import Child from './components/List.vue'
 //import Vuetify from 'vuetify'
 import vuetify from './plugins/vuetify';
 
@@ -14,8 +15,9 @@ Vue.use(VueRouter)
 //const Mail = { template: '<div>mail</div>' }
 
 const routes = [
-  {path: '/mail',component: Mail},
-  {path: '/hello',component: HelloWorld},
+  {path: '/home', component: Home},
+  {path: '/mail', component: Mail}, 
+  {path: '/list', component: Child} 
 ];
 
 const router = new VueRouter({

@@ -3,25 +3,21 @@
     <template>      
         <v-navigation-drawer app v-model="drawer" class="blue" dark permanent>
           <v-list>
-            <v-list-item v-for="item in items" :key="item.title" link>
-              <v-list-item-icon>
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-icon>
-
+            <v-list-item v-for="item in items" :key="item.title" link :to="item.route" >
               <v-list-item-content>
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
+              </v-list-item-content>              
+            </v-list-item>            
           </v-list>
         </v-navigation-drawer>
     </template>
+      
     
-    
-    <v-app-bar app color="primary" >
+    <v-app-bar app color="primary">
       <div class="d-flex align-center">
         
 
-        
+       
 
         
       </div>
@@ -32,6 +28,8 @@
     </v-app-bar>
 
     <v-content>
+      <!--<router-link to="/mail">Mail</router-link> 
+      <router-link to="/home">HelloWorld</router-link>-->
       <router-view></router-view>
     </v-content>
   </v-app>
@@ -49,10 +47,11 @@ export default {
 
   data: () => ({
     drawer: true,
-    items: [
-          { title: 'DemoNavigation'},
-          { title: 'Home'},
-          { title: 'Mail'},
+    items: [          
+          { title: 'Home', route: '/home'},
+          { title: 'Mail', route: '/mail'},
+          { title: 'List', route: '/list'},
+          
         ],
   }),
 };
