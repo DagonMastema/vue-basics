@@ -1,6 +1,6 @@
 <template>
 <div >
-  <button type="button" name="button" v-on:click="$emit('increment')">Click me</button><br>  
+  <button type="button" name="button" v-on:click="$emit('increment')">Click me</button><br>
   <label for="input">Input:</label>
   <input id="input" type="text" name="msg" v-model="childMessage" v-on:keyup="emitMethod">
   <p>{{childMessage}}</p>
@@ -13,8 +13,8 @@
 <script>
 export default {
   data: function () {
-    return {      
-      childMessage: '',            
+    return {
+      childMessage: '',
     }
   },
   props: {

@@ -15,9 +15,9 @@ Vue.use(VueRouter)
 //const Mail = { template: '<div>mail</div>' }
 
 const routes = [
-  {path: '/home', component: Home},
-  {path: '/mail', component: Mail}, 
-  {path: '/list', component: Child} 
+  {path: '/', component: Home},
+  {path: '/mail', component: Mail},
+  {path: '/list', component: Child}
 ];
 
 const router = new VueRouter({
@@ -27,7 +27,7 @@ const router = new VueRouter({
 Vue.config.productionTip = false
 
 new Vue({
-  router,  
+  router,
   vuetify,
   render: h => h(App)
 }).$mount('#app')
