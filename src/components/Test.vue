@@ -6,21 +6,16 @@
 import axios from 'axios' 
 
 export default {
-    name: 'Test',
-    components: {
-        axios
-    },
+   name: 'Test',
     data () {
     return {
       info: null
     }
   },
-  methods:{
   mounted () {
     axios
       .get('https://api.coindesk.com/v1/bpi/currentprice.json')
       .then(response => (this.info = response))
-  }
   }
 }
 </script>
