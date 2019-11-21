@@ -51,7 +51,7 @@ export default {
           { title: 'Home', route: '/'},
           { title: 'Mail', route: '/mail'},
           { title: 'List', route: '/list'},
-
+          { title: 'Test', route: '/test'}
         ],
   }),
 };

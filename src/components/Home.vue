@@ -12,7 +12,13 @@
           contain
           height="200"
         ></v-img>
+        <v-btn color="success">Success</v-btn>
+        <v-btn color="error">Error</v-btn>
+        <v-btn color="warning">Warning</v-btn>
+        <v-btn color="info">Info</v-btn>
       </v-flex>
+
+        
 
       <v-flex mb-4>
         <h1 class="display-2 font-weight-bold mb-3">
@@ -68,11 +74,6 @@
         mb-5
       >
         <h2 class="headline font-weight-bold mb-3">Ecosystem</h2>
-
-        <v-btn color="success">Success</v-btn>
-        <v-btn color="error">Error</v-btn>
-        <v-btn color="warning">Warning</v-btn>
-        <v-btn color="info">Info</v-btn>
 
         <v-layout justify-center>
           <a
