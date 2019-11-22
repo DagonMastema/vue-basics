@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import Mail from './components/Mail.vue'
+import Form from './components/Form.vue'
 import Home from './components/Home.vue'
 import Child from './components/List.vue'
 import Test from './components/Test.vue'
@@ -19,7 +19,7 @@ Vue.use(axios)
 
 const routes = [
   {path: '/', component: Home},
-  {path: '/mail', component: Mail},
+  {path: '/form', component: Form},
   {path: '/list', component: Child},
   {path: '/test', component:Test}
 ];

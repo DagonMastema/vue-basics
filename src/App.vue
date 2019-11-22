@@ -49,7 +49,7 @@ export default {
     drawer: true,
     items: [
           { title: 'Home', route: '/'},
-          { title: 'Mail', route: '/mail'},
+          { title: 'Form', route: '/form'},
           { title: 'List', route: '/list'},
           { title: 'Test', route: '/test'}
         ],
