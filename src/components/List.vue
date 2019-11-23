@@ -1,12 +1,20 @@
 <template>
 <div >
-  <button type="button" name="button" v-on:click="$emit('increment')">Click me</button><br>
-  <label for="input">Input:</label>
-  <input id="input" type="text" name="msg" v-model="childMessage" v-on:keyup="emitMethod">
-  <p>{{childMessage}}</p>
-  <div><p>{{ title }}</p>
-  <p>{{ parentData }}</p>
-  <p>{{ stringProp }}</p></div>
+  <v-layout row>
+    <v-container id="datalist">
+    <v-row v-for="(item) in employeelist" :key="item.email">
+        <v-col cols="12" md="4">
+          <v-list>{{item.firstname}}</v-list>
+        </v-col>
+        <v-col cols="12" md="4">
+          <v-list>{{item.lastname}}</v-list>
+        </v-col>
+        <v-col cols="12" md="4">
+          <v-list>{{item.email}}</v-list>
+        </v-col>                  
+      </v-row>
+  </v-container>     
+  </v-layout>  
 </div>
 </template>
 
@@ -18,14 +26,14 @@ export default {
     }
   },
   props: {
-    parentData: Object,
-    stringProp: String,
-    title: String
+    employeelist: {
+      type: Array
+    }
   },
   methods: {
     emitMethod(){
       this.$emit('childToParent', this.childMessage)
-    }
+    },
   },
   name: 'Child'
 }
