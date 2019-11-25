@@ -17,12 +17,13 @@
         </v-col>
         <v-col cols="12" md="4">
           <v-text-field v-model="email" :rules="emailRules" label="E-mail"></v-text-field>
-        </v-col>        
-        <v-spacer></v-spacer>
-        <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate" text>Valid</v-btn>
+        </v-col>      
+
+        <v-spacer></v-spacer>  
+
         <v-btn :disabled="!valid" color="success" class="mr-4" @click="add">Submit</v-btn>  
         <v-btn  color="error" class="mr-4" @click="reset">Reset</v-btn>       
-      </v-row>     
+      </v-row>          
     </v-container>
   </v-form> 
     </div>
@@ -39,6 +40,7 @@ export default {
   },
   data: ()=> ({
     valid: true,
+    dialog: false,
     employee: [],
       firstname: '',
       lastname: '',
@@ -62,7 +64,7 @@ export default {
         this.employee.push({
         firstname: this.firstname,
         lastname: this.lastname,
-        email: this.email,
+        email: this.email,        
         })      
       }
     }, 

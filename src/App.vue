@@ -50,7 +50,7 @@ export default {
     items: [
           { title: 'Home', route: '/'},
           { title: 'Form', route: '/form'},
-          { title: 'List', route: '/list'},
+          //{ title: 'List', route: '/list'},
           { title: 'Test', route: '/test'}
         ],
   }),
