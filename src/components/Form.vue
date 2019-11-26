@@ -20,7 +20,6 @@
         </v-col>      
 
         <v-spacer></v-spacer>  
-
         <v-btn :disabled="!valid" color="success" class="mr-4" @click="add">Submit</v-btn>  
         <v-btn  color="error" class="mr-4" @click="reset">Reset</v-btn>       
       </v-row>          
@@ -34,6 +33,7 @@ import Child from './List.vue'
 
 export default {
   name: 'Form',
+  
 
   components: {
    Child
@@ -64,7 +64,8 @@ export default {
         this.employee.push({
         firstname: this.firstname,
         lastname: this.lastname,
-        email: this.email,        
+        email: this.email,  
+        edit: false,      
         })      
       }
     }, 
