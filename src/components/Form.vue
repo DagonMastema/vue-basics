@@ -8,15 +8,15 @@
 
       <v-row>
         <v-col cols="12" md="4">
-          <v-text-field v-model="firstname" :rules="nameRules" :counter="10" label="First name"
+          <v-text-field v-model="form.firstname" :rules="nameRules" :counter="10" label="First name"
             required></v-text-field>
         </v-col>
         <v-col cols="12" md="4">
-          <v-text-field v-model="lastname" :rules="nameRules" :counter="10" label="Last name"
+          <v-text-field v-model="form.lastname" :rules="nameRules" :counter="10" label="Last name"
             required></v-text-field>
         </v-col>
         <v-col cols="12" md="4">
-          <v-text-field v-model="email" :rules="emailRules" label="E-mail"></v-text-field>
+          <v-text-field v-model="form.email" :rules="emailRules" label="E-mail"></v-text-field>
         </v-col>      
 
         <v-spacer></v-spacer>  
@@ -41,14 +41,18 @@ export default {
   data: ()=> ({
     valid: true,
     dialog: false,
+    form: {
+    firstname: '',
+    lastname: '',
+    email: ''
+  },
     employee: [],
-      firstname: '',
-      lastname: '',
+      
       nameRules: [
         v => !!v || 'Name is required',
         v => (v && v.length <= 10) || 'Name must be less than 10 characters',
       ],
-      email: '',
+      
       emailRules: [
         v => /.+@.+\..+/.test(v) || "email should be valid"
       ]      
@@ -62,9 +66,9 @@ export default {
       },  
       add () {
         this.employee.push({
-        firstname: this.firstname,
-        lastname: this.lastname,
-        email: this.email,  
+        firstname: this.form.firstname,
+        lastname: this.form.lastname,
+        email: this.form.email,  
         edit: false,      
         })      
       }
