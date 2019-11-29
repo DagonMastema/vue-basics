@@ -29,19 +29,19 @@
       <v-card>
         <v-card-title class="headline">EDIT</v-card-title>
         <v-col >
-          <v-text-field v-model="editeddata.firstname" :rules="nameRules" :counter="10" label="First name"
+          <v-text-field v-model="editdata.firstname" :rules="nameRules" :counter="10" label="First name"
             required></v-text-field>
         </v-col>
         <v-col >
-          <v-text-field v-model="editeddata.lastname" :rules="nameRules" :counter="10" label="Last name"
+          <v-text-field v-model="editdata.lastname" :rules="nameRules" :counter="10" label="Last name"
             required></v-text-field>
         </v-col>
         <v-col >
-          <v-text-field v-model="editeddata.email" :rules="emailRules" label="E-mail"></v-text-field>
+          <v-text-field v-model="editdata.email" :rules="emailRules" label="E-mail"></v-text-field>
         </v-col>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="dialog = false">SAVE</v-btn>          
+          <v-btn color="green darken-1" text @click="save(item,index)">SAVE</v-btn>          
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -58,11 +58,9 @@ export default {
   data: function () {
     return {
     dialog: false,
-    editeddata: {
-      firstname: '',
-      lastname: '',
-      email: ''
-  },
+    editdata: {
+
+    }
     }
   },
   props: {
@@ -73,13 +71,24 @@ export default {
   methods: {    
     edit(item){
      this.dialog= true     
-     this.editeddata.firstname=item.firstname
-     this.editeddata.lastname=item.lastname
-     this.editeddata.email=item.email
-     var index = this.employeelist.indexOf(item)     
-     this.employeelist.splice(index,1,this.editeddata)
+     this.editdata.firstname=item.firstname
+     this.editdata.lastname=item.lastname
+     this.editdata.email=item.email
+     //var index = this.employeelist.indexOf(item)  
+     //alert(index)  
+     //var x = this.employeelist[index]
+     //alert(JSON.stringify(x))
+     //alert(JSON.stringify(this.employeelist[index]))
      
     },    
+    save(item){
+     var index = this.employeelist.indexOf(item) 
+     this.employeelist[index] = this.editdata 
+     var x = this.employeelist[index]
+     alert(JSON.stringify(x))
+     this.employeelist.splice(index,1,x)
+     this.dialog= false    
+    },
     remove(index){
       this.employeelist.splice(index,1)
     }  
