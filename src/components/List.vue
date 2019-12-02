@@ -58,10 +58,20 @@ export default {
   data: function () {
     return {
     dialog: false,
+    nameRules: [
+        v => !!v || 'Name is required',
+        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+      ],
+      
+      emailRules: [
+        v => /.+@.+\..+/.test(v) || "email should be valid"
+      ],
     editdata: {
 
+    },
+    index: -1
     }
-    }
+    
   },
   props: {
     employeelist: {
@@ -71,22 +81,22 @@ export default {
   methods: {    
     edit(item){
      this.dialog= true     
-     this.editdata.firstname=item.firstname
-     this.editdata.lastname=item.lastname
-     this.editdata.email=item.email
-     //var index = this.employeelist.indexOf(item)  
+     this.editdata=item
+     //this.editdata.lastname=item.lastname
+     //this.editdata.email=item.email
+     //this.index = this.employeelist.indexOf(item)  
      //alert(index)  
      //var x = this.employeelist[index]
      //alert(JSON.stringify(x))
      //alert(JSON.stringify(this.employeelist[index]))
      
     },    
-    save(item){
-     var index = this.employeelist.indexOf(item) 
-     this.employeelist[index] = this.editdata 
-     var x = this.employeelist[index]
-     alert(JSON.stringify(x))
-     this.employeelist.splice(index,1,x)
+    save(){
+     //var index = this.employeelist.indexOf(item) 
+     //this.employeelist[this.index].firstname = this.editdata.firstname
+     //var x = this.employeelist[index]
+     //alert(JSON.stringify(x)) 
+     
      this.dialog= false    
     },
     remove(index){

@@ -55,7 +55,8 @@ export default {
       
       emailRules: [
         v => /.+@.+\..+/.test(v) || "email should be valid"
-      ]      
+      ]
+      
   }),
    methods:{
       validate () {
