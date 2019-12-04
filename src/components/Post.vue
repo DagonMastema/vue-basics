@@ -28,12 +28,11 @@
             <v-list-item-text></v-list-item-text>            
           </v-list-item-content>
           
-
         <v-card-actions>
           <v-spacer></v-spacer>           
-          <v-btn color="orange lighten-2"  text @click="remove(index)">DELETE</v-btn>                   
+          <v-btn color="orange lighten-2"  text @click="remove(index)">DELETE</v-btn>                            
         </v-card-actions>
-        <Comments></Comments>
+        <Comments ></Comments>
 
       </v-card>
       </v-col>                                               
@@ -55,6 +54,7 @@ export default {
   },
 
   data: () => ({
+    
      valid: true,
      
      //comments: " ",
@@ -63,7 +63,17 @@ export default {
         v => !!v || 'It is empty',
         v => (v && v.length <= 500) || 'Comments should be within 500 characters',
       ],
-      posts: [],
+      posts: [
+          {
+        contents: 'postdata 1',
+        },
+      {
+        contents: 'postdata 2',
+        },
+      {
+        contents: 'postdata 3',
+        },
+      ],
       //commentline: []
   }),
   methods:{
@@ -79,7 +89,8 @@ export default {
       remove(index){
       this.posts.splice(index,1)
       confirm("Are you sure you want to delete")
-    }
+    },
+    
     },
 };
 </script>
