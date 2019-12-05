@@ -11,7 +11,7 @@
       </v-row>            
 
       <v-col >
-            <v-list-item-text  v-for="(line) in commentlist" :key="line.comments">        
+            <v-list-item-text  v-for="line in commentlist" :key="line.comments">        
             <v-list-item-subtitle>{{line.comments}}</v-list-item-subtitle>
             </v-list-item-text>    
         </v-col>  
@@ -27,15 +27,15 @@
 export default {
   name: 'Comments',
 
-  /*props: {
+  props: {
     commentlist: {
       type: Array,     
     },    
-  },*/
+  },
 
   data: () => ({
      comments: " ",
-     commentlist: []
+     //commentlist: []
   }),
   methods: {
     send () {               

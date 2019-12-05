@@ -17,7 +17,7 @@
     </v-container>
     </v-form>
      </v-card>
-
+    <pre>{{posts}}</pre> 
   <v-container v-for="(post,index) in posts" :key="post.contents">
     <v-row >
       <v-col cols="12" md="12">
@@ -32,11 +32,10 @@
           <v-spacer></v-spacer>           
           <v-btn color="orange lighten-2"  text @click="remove(index)">DELETE</v-btn>                            
         </v-card-actions>
-        <Comments ></Comments>
-
+        <Comments :commentlist="post.commentline"></Comments>        
       </v-card>
       </v-col>                                               
-    </v-row>          
+    </v-row>             
   </v-container>
 
   </v-container>
@@ -57,22 +56,34 @@ export default {
     
      valid: true,
      
-     //comments: " ",
+     comments: " ",
      contents: " ",
      contentsRules: [
         v => !!v || 'It is empty',
         v => (v && v.length <= 500) || 'Comments should be within 500 characters',
       ],
       posts: [
-          {
+         {
         contents: 'postdata 1',
-        },
+        commentline: [        
+       {comments: "1"},
+       {comments: "22"},
+       {comments: "3"},         
+     ]},
       {
         contents: 'postdata 2',
-        },
+        commentline: [        
+       {comments: "1"},
+       {comments: "2"},
+       {comments: "23"},         
+     ]},
       {
         contents: 'postdata 3',
-        },
+        commentline: [        
+       {comments: "11"},
+       {comments: "2"},
+       {comments: "3"},         
+     ]},
       ],
       //commentline: []
   }),
@@ -82,7 +93,7 @@ export default {
       },      
       add () {
         this.posts.push({
-        contents: this.contents  
+        contents: this.contents,         
         //edit: false,              
         })      
       },      
